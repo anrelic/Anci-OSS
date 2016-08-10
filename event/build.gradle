@@ -3,7 +3,10 @@ implementations {
 }
 
 require {
-    inherit ":service", "impl"
+    from(":service") {
+        inherit "impl"
+        sources "main", "api"
+    }
 }
 
 dependencies {
