@@ -1,0 +1,55 @@
+ext.versions = [
+        kotlin : "1.0.3",
+        kotlinx: "0.1",
+        log4j: "2.5"
+]
+
+ext.lib = [
+        ecollections: [
+                api: 'org.eclipse.collections:eclipse-collections-api:7.1.0',
+                impl: 'org.eclipse.collections:eclipse-collections:7.1.0',
+                test: 'org.eclipse.collections:eclipse-collections-testutils:7.1.0',
+                for: 'org.eclipse.collections:eclipse-collections-forkjoin:7.1.0'
+        ],
+        plugins   : [
+                junit: 'org.junit.platform.gradle.plugin'
+        ],
+        kotlin    : [
+                runtime: "org.jetbrains.kotlin:kotlin-runtime:${versions.kotlin}",
+                std    : "org.jetbrains.kotlin:kotlin-stdlib:${versions.kotlin}",
+                reflect: "org.jetbrains.kotlin:kotlin-reflect:${versions.kotlin}",
+                jdk8   : "org.jetbrains.kotlinx:kotlinx-support-jdk8:${versions.kotlinx}",
+                jdk7   : "org.jetbrains.kotlinx:kotlinx-support-jdk7:${versions.kotlinx}"
+        ],
+        spock     : 'org.spockframework:spock-core:1.1-groovy-2.4-rc-1',
+        jupiter   : [
+                api: "org.junit.jupiter:junit-jupiter-api:5.0.0-M1",
+                engine: "org.junit.jupiter:junit-jupiter-engine:5.0.0-M1"
+        ],
+        junit     : [
+                platform: 'org.junit.platform:junit-platform-runner:1.0.0-M1'
+        ],
+        kotlintest: [
+                'org.assertj:assertj-core:3.4.1',
+                "org.jetbrains.kotlin:kotlin-test:${versions.kotlin}",
+                "com.nhaarman:mockito-kotlin:0.5.0"
+        ],
+        netty     : [
+                all: "io.netty:netty-all:4.1.1.Final"
+        ],
+        guava     : "com.google.guava:guava:19.0",
+        kodein    : 'com.github.salomonbrys.kodein:kodein:2.8.0',
+        protobuf  : "com.google.protobuf:protobuf-java:2.6.1",
+        dagger    : "com.google.dagger:dagger:2.2",
+        gson      : "com.google.code.gson:gson:2.7",
+        log4j     : [
+                "org.apache.logging.log4j:log4j-core:${versions.log4j}",
+                "org.apache.logging.log4j:log4j-jul:${versions.log4j}"
+        ],
+        rxkotlin  : "io.reactivex:rxkotlin:0.60.0"
+]
+
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.14'
+}
