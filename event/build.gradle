@@ -1,0 +1,22 @@
+implementations {
+    copyStream
+}
+
+require {
+    inherit ":service", "impl"
+}
+
+dependencies {
+    compile lib.kotlin["reflect"],
+            lib["guava"]
+
+    testCompile lib["kotlintest"],
+            project(":test"),
+            lib.jupiter["api"]
+
+    testRuntime lib.jupiter["engine"]
+
+    copyStreamCompile lib.kotlin["jdk8"]
+
+    apiCompile lib.kotlin["std"]
+}

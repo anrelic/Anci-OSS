@@ -1,0 +1,20 @@
+implementations {
+    spec
+    impl
+}
+
+require {
+    inherit ":util"
+}
+
+dependencies {
+    apiCompile lib.kotlin["std"]
+
+    specCompile lib.jupiter["api"],
+            lib["kotlintest"],
+            project(":test")
+
+    implCompile lib.kotlin["reflect"],
+            lib.kotlin["jdk8"],
+            lib["log4j"]
+}

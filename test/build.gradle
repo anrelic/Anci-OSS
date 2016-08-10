@@ -1,0 +1,4 @@
+dependencies {
+    compile lib.kotlintest,
+            lib.jupiter["api"]
+}
