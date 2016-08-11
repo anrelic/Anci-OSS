@@ -1,6 +1,6 @@
 @file:Suppress("NOTHING_TO_INLINE")
 
-package su.jfdev.anrelic.util
+package su.jfdev.anci.util
 
 import java.io.*
 import java.net.*

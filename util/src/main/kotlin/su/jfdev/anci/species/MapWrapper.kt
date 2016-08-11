@@ -1,4 +1,4 @@
-package su.jfdev.anrelic.species
+package su.jfdev.anci.species
 
 import java.util.*
 

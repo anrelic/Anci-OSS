@@ -1,6 +1,6 @@
 package su.jfdev.anci.service
 
-import su.jfdev.anrelic.util.stream.*
+import su.jfdev.anci.util.stream.*
 import java.nio.file.*
 import java.nio.file.Files.*
 import java.util.stream.Collectors.*

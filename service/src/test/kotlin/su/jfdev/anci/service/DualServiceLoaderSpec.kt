@@ -1,5 +1,5 @@
 package su.jfdev.anci.service
 
-import su.jfdev.anrelic.util.*
+import su.jfdev.anci.util.*
 
 class DualServiceLoaderSpec: ServiceLoaderSpec<Any>(reify(), collector = ServiceCollectorImpl())

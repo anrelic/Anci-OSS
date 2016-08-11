@@ -1,3 +1,3 @@
-package su.jfdev.anrelic.util
+package su.jfdev.anci.util
 
 val Class<*>.clazzLoader: ClassLoader get() = classLoader ?: ClassLoader.getSystemClassLoader()

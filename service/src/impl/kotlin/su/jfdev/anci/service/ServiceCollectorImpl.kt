@@ -1,8 +1,8 @@
 package su.jfdev.anci.service
 
 import kotlinx.support.jdk8.collections.*
-import su.jfdev.anrelic.util.*
-import su.jfdev.anrelic.util.stream.*
+import su.jfdev.anci.util.*
+import su.jfdev.anci.util.stream.*
 import java.io.*
 import java.nio.file.*
 import java.util.stream.*

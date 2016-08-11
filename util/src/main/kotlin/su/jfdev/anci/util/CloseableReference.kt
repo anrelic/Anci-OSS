@@ -1,4 +1,4 @@
-package su.jfdev.anrelic.util
+package su.jfdev.anci.util
 
 class CloseableReference<C: Any, O: Any>(open: O) {
     var closed: C? = null; private set

@@ -1,4 +1,4 @@
-package su.jfdev.anrelic.rules
+package su.jfdev.anci.rules
 
 import java.util.*
 

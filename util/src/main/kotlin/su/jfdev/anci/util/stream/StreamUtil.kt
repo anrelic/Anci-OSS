@@ -1,4 +1,4 @@
-package su.jfdev.anrelic.util.stream
+package su.jfdev.anci.util.stream
 
 import java.util.stream.*
 

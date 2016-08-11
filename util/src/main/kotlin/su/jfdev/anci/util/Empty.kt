@@ -1,4 +1,4 @@
-package su.jfdev.anrelic.util
+package su.jfdev.anci.util
 
 import java.io.*
 
