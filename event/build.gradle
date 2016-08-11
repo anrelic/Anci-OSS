@@ -1,4 +1,5 @@
 implementations {
+    spec
     copyStream
 }
 
@@ -13,9 +14,9 @@ dependencies {
     compile lib.kotlin["reflect"],
             lib["guava"]
 
-    testCompile lib["kotlintest"],
-            project(":test"),
-            lib.jupiter["api"]
+    specCompile lib.jupiter["api"],
+            lib["kotlintest"],
+            project(":test")
 
     testRuntime lib.jupiter["engine"]
 
