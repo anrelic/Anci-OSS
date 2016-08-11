@@ -22,11 +22,5 @@ class ServiceCollectorImpl: ServiceCollector {
     private val ServiceSource.externalPaths: Stream<Path> get() = external.stream().flatMap {
         File(it).toPath().walkOrEmpty()
     }
-
-    override val default: ServiceLoader = this collect ServiceSource(internal = setOf(resourcesPath),
-                                                                     external = setOf(servicesPath))
-
-    private val servicesPath: String get() = System.getProperty("services.dir", "services")
-    private val resourcesPath: String get() = System.getProperty("services.resources.dir", "META-INF/services")
 }
 
