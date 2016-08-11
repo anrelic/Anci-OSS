@@ -1,9 +1,9 @@
 package loop
 
 import org.junit.jupiter.api.*
-import su.jfdev.anrelic.event.*
-import su.jfdev.anrelic.event.Prioritized.*
-import su.jfdev.anrelic.event.Prioritized.Priority.*
+import su.jfdev.anci.event.*
+import su.jfdev.anci.event.Prioritized.*
+import su.jfdev.anci.event.Prioritized.Priority.*
 import su.jfdev.util.fluent.*
 
 abstract class EventLoopSpec {

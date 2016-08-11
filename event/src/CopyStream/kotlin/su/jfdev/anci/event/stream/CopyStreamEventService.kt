@@ -1,6 +1,6 @@
-package su.jfdev.anrelic.event.stream
+package su.jfdev.anci.event.stream
 
-import su.jfdev.anrelic.service.*
+import su.jfdev.anci.service.*
 import java.util.concurrent.*
 
 @Service

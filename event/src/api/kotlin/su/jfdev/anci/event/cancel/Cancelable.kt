@@ -1,4 +1,4 @@
-package su.jfdev.anrelic.event.cancel
+package su.jfdev.anci.event.cancel
 
 interface Cancelable {
     val cancelled: Boolean

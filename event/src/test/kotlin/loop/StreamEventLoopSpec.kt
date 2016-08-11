@@ -1,7 +1,7 @@
 package loop
 
-import su.jfdev.anrelic.event.*
-import su.jfdev.anrelic.event.stream.*
+import su.jfdev.anci.event.*
+import su.jfdev.anci.event.stream.*
 
 class StreamEventLoopSpec: EventLoopSpec() {
     override val eventLoop: EventLoop = StreamEventLoop

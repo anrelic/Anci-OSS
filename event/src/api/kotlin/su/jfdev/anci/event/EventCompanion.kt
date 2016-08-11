@@ -1,4 +1,4 @@
-package su.jfdev.anrelic.event
+package su.jfdev.anci.event
 
 @Suppress("UNUSED_PARAMETER")
 abstract class EventCompanion<E: Any>(loop: EventLoop) {

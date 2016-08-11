@@ -1,7 +1,7 @@
-package su.jfdev.anrelic.event
+package su.jfdev.anci.event
 
-import su.jfdev.anrelic.event.phase.*
-import su.jfdev.anrelic.event.phase.Event.*
+import su.jfdev.anci.event.phase.*
+import su.jfdev.anci.event.phase.Event.*
 import kotlin.properties.*
 
 /**

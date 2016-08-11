@@ -1,7 +1,7 @@
-package su.jfdev.anrelic.event.stream
+package su.jfdev.anci.event.stream
 
-import su.jfdev.anrelic.event.*
-import su.jfdev.anrelic.service.*
+import su.jfdev.anci.event.*
+import su.jfdev.anci.service.*
 
 @Service
 abstract class StreamService(): EventService {

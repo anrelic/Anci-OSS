@@ -2,8 +2,8 @@ package bus
 
 import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.*
-import su.jfdev.anrelic.event.*
-import su.jfdev.anrelic.event.stream.*
+import su.jfdev.anci.event.*
+import su.jfdev.anci.event.stream.*
 import java.util.*
 import java.util.concurrent.*
 

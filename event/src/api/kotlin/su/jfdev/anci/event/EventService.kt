@@ -1,6 +1,6 @@
-package su.jfdev.anrelic.event
+package su.jfdev.anci.event
 
-import su.jfdev.anrelic.service.*
+import su.jfdev.anci.service.*
 
 @Service interface EventService {
     fun createLoop(): EventLoop

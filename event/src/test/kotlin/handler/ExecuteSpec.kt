@@ -3,7 +3,7 @@
 package handler
 
 import org.junit.jupiter.api.*
-import su.jfdev.anrelic.event.handler.*
+import su.jfdev.anci.event.handler.*
 import kotlin.test.*
 
 class ExecuteSpec {

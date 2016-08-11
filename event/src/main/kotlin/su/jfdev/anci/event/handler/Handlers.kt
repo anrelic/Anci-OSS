@@ -1,7 +1,7 @@
-package su.jfdev.anrelic.event.handler
+package su.jfdev.anci.event.handler
 
-import su.jfdev.anrelic.event.*
-import su.jfdev.anrelic.event.Prioritized.*
+import su.jfdev.anci.event.*
+import su.jfdev.anci.event.Prioritized.*
 import java.lang.reflect.*
 import kotlin.annotation.AnnotationTarget.*
 import kotlin.reflect.*

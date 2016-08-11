@@ -1,4 +1,4 @@
-package su.jfdev.anrelic.event
+package su.jfdev.anci.event
 
 /**
  * Jamefrus and his team on 13.06.2016.

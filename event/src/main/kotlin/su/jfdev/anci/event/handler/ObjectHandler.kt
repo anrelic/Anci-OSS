@@ -1,4 +1,4 @@
-package su.jfdev.anrelic.event.handler
+package su.jfdev.anci.event.handler
 
 import java.lang.reflect.*
 

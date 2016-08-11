@@ -1,8 +1,8 @@
-package su.jfdev.anrelic.event.stream
+package su.jfdev.anci.event.stream
 
 import kotlinx.support.jdk8.collections.*
-import su.jfdev.anrelic.event.*
-import su.jfdev.anrelic.event.Prioritized.*
+import su.jfdev.anci.event.*
+import su.jfdev.anci.event.Prioritized.*
 
 object StreamEventLoop: EventLoop {
     override fun <E: Any> handle(subscribers: Collection<(E) -> Unit>, event: E)

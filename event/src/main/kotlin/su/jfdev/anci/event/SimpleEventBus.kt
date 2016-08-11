@@ -1,4 +1,4 @@
-package su.jfdev.anrelic.event
+package su.jfdev.anci.event
 
 class SimpleEventBus<T: Any>(override val loop: EventLoop,
                              private val subscribers: MutableCollection<(T) -> Unit>): EventBus<T> {

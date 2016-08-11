@@ -2,7 +2,7 @@ package handler
 
 import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.*
-import su.jfdev.anrelic.event.handler.*
+import su.jfdev.anci.event.handler.*
 import java.util.*
 
 class ObjectHandleSpec {
