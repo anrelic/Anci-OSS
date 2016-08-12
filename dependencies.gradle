@@ -1,7 +1,9 @@
 ext.versions = [
         kotlin : "1.0.3",
         kotlinx: "0.1",
-        log4j: "2.5"
+        log4j: "2.5",
+        jupiter: "5.0.0-M2",
+        jplatform: "1.0.0-M2"
 ]
 
 ext.lib = [
@@ -10,9 +12,6 @@ ext.lib = [
                 impl: 'org.eclipse.collections:eclipse-collections:7.1.0',
                 test: 'org.eclipse.collections:eclipse-collections-testutils:7.1.0',
                 for: 'org.eclipse.collections:eclipse-collections-forkjoin:7.1.0'
-        ],
-        plugins   : [
-                junit: 'org.junit.platform.gradle.plugin'
         ],
         kotlin    : [
                 runtime: "org.jetbrains.kotlin:kotlin-runtime:${versions.kotlin}",
@@ -23,11 +22,12 @@ ext.lib = [
         ],
         spock     : 'org.spockframework:spock-core:1.1-groovy-2.4-rc-1',
         jupiter   : [
-                api: "org.junit.jupiter:junit-jupiter-api:5.0.0-M1",
-                engine: "org.junit.jupiter:junit-jupiter-engine:5.0.0-M1"
+                api: "org.junit.jupiter:junit-jupiter-api:${versions.jupiter}",
+                engine: "org.junit.jupiter:junit-jupiter-engine:${versions.jupiter}"
         ],
         junit     : [
-                platform: 'org.junit.platform:junit-platform-runner:1.0.0-M1'
+                platform: "org.junit.platform:junit-platform-runner:${versions.jplatform}",
+                plugin: "org.junit.platform:junit-platform-gradle-plugin:${versions.jplatform}"
         ],
         kotlintest: [
                 'org.assertj:assertj-core:3.4.1',

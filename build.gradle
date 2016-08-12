@@ -12,8 +12,8 @@ buildscript {
 
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}",
-                'org.junit.platform:junit-platform-gradle-plugin:1.0.0-M1',
-                "su.jfdev.gradle.struct:gradle-struct:1.4.3"
+                lib.junit["plugin"],
+                "su.jfdev.gradle.struct:gradle-struct:1.4.4"
     }
 }
 
@@ -49,12 +49,20 @@ subprojects {
         }
     }
 
+    publishing {
+        publications {
+            general(MavenPublication){
+                artifactId "anci-$name"
+            }
+        }
+    }
+
     bintray {
         user = property("binuser")
         key = property("binkey")
         configurations = ['general']
         pkg {
-            repo = 'maven'
+            repo = 'temp'
             name = "anci-$name"
             userOrg = property("binuser")
             licenses = ['MIT']
