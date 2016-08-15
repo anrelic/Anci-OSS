@@ -1,7 +1,9 @@
 implementations {
-    spec
-    impl
+    spec.publish "$fullname-spec"
+    impl.publish "$fullname-impl"
 }
+
+bintray.publications = described
 
 require {
     inherit ":util"

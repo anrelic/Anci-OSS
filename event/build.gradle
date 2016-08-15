@@ -1,7 +1,9 @@
 implementations {
-    spec
-    copyStream
+    spec.publish "$fullname-spec"
+    copyStream.publish "$fullname-copyStream" publish "$fullname-impl"
 }
+
+bintray.publications = described
 
 require {
     from(":service") {

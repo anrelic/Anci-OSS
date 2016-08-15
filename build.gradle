@@ -26,10 +26,13 @@ subprojects {
     apply plugin: 'com.jfrog.bintray'
 
     group 'su.jfdev.anci'
-    version '0.1.4'
+    version '0.1.2'
 
     repositories {
         jcenter()
+        maven {
+            url  "http://dl.bintray.com/anci/maven"
+        }
     }
 
     dependencies {
@@ -49,7 +52,7 @@ subprojects {
     ext.fullname = "anci-$name"
     describe {
         api.publish "$fullname-api"
-        main.publish fullname
+        main.publish "$fullname-main"
     }
 
     bintray {
