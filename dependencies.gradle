@@ -6,6 +6,7 @@ ext.versions = [
         jplatform: "1.0.0-M2"
 ]
 
+def anci = "su.jfdev.anci:anci"
 ext.lib = [
         ecollections: [
                 api: 'org.eclipse.collections:eclipse-collections-api:7.1.0',
@@ -13,40 +14,46 @@ ext.lib = [
                 test: 'org.eclipse.collections:eclipse-collections-testutils:7.1.0',
                 for: 'org.eclipse.collections:eclipse-collections-forkjoin:7.1.0'
         ],
-        kotlin    : [
+        anci: [
+                service: "$anci-service-%s:0.1.2",
+                event  : "$anci-event-%s:0.1.2",
+                test   : "$anci-test-%s:0.1.2",
+                util   : "$anci-util-%s:0.1.2"
+        ],
+        kotlin      : [
                 runtime: "org.jetbrains.kotlin:kotlin-runtime:${versions.kotlin}",
                 std    : "org.jetbrains.kotlin:kotlin-stdlib:${versions.kotlin}",
                 reflect: "org.jetbrains.kotlin:kotlin-reflect:${versions.kotlin}",
                 jdk8   : "org.jetbrains.kotlinx:kotlinx-support-jdk8:${versions.kotlinx}",
                 jdk7   : "org.jetbrains.kotlinx:kotlinx-support-jdk7:${versions.kotlinx}"
         ],
-        spock     : 'org.spockframework:spock-core:1.1-groovy-2.4-rc-1',
-        jupiter   : [
+        spock       : 'org.spockframework:spock-core:1.1-groovy-2.4-rc-1',
+        jupiter     : [
                 api: "org.junit.jupiter:junit-jupiter-api:${versions.jupiter}",
                 engine: "org.junit.jupiter:junit-jupiter-engine:${versions.jupiter}"
         ],
-        junit     : [
+        junit       : [
                 platform: "org.junit.platform:junit-platform-runner:${versions.jplatform}",
                 plugin: "org.junit.platform:junit-platform-gradle-plugin:${versions.jplatform}"
         ],
-        kotlintest: [
+        kotlintest  : [
                 'org.assertj:assertj-core:3.4.1',
                 "org.jetbrains.kotlin:kotlin-test:${versions.kotlin}",
                 "com.nhaarman:mockito-kotlin:0.5.0"
         ],
-        netty     : [
+        netty       : [
                 all: "io.netty:netty-all:4.1.1.Final"
         ],
-        guava     : "com.google.guava:guava:19.0",
-        kodein    : 'com.github.salomonbrys.kodein:kodein:2.8.0',
-        protobuf  : "com.google.protobuf:protobuf-java:2.6.1",
-        dagger    : "com.google.dagger:dagger:2.2",
-        gson      : "com.google.code.gson:gson:2.7",
-        log4j     : [
+        guava       : "com.google.guava:guava:19.0",
+        kodein      : 'com.github.salomonbrys.kodein:kodein:2.8.0',
+        protobuf    : "com.google.protobuf:protobuf-java:2.6.1",
+        dagger      : "com.google.dagger:dagger:2.2",
+        gson        : "com.google.code.gson:gson:2.7",
+        log4j       : [
                 "org.apache.logging.log4j:log4j-core:${versions.log4j}",
                 "org.apache.logging.log4j:log4j-jul:${versions.log4j}"
         ],
-        rxkotlin  : "io.reactivex:rxkotlin:0.60.0"
+        rxkotlin    : "io.reactivex:rxkotlin:0.60.0"
 ]
 
 
