@@ -3,7 +3,8 @@ ext.versions = [
         kotlinx: "0.1",
         log4j: "2.5",
         jupiter: "5.0.0-M2",
-        jplatform: "1.0.0-M2"
+        jplatform: "1.0.0-M2",
+        dokka: "0.9.9"
 ]
 
 def anci = "su.jfdev.anci:anci"

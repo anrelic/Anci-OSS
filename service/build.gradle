@@ -1,6 +1,11 @@
 implementations {
-    spec.publish "$fullname-spec"
-    impl.publish "$fullname-impl"
+    spec
+    impl
+}
+
+publish {
+    spec
+    impl
 }
 
 bintray.publications = described

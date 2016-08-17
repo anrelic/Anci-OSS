@@ -1,6 +1,11 @@
 implementations {
-    spec.publish "$fullname-spec"
-    copyStream.publish "$fullname-copyStream" publish "$fullname-impl"
+    spec
+    copyStream
+}
+
+publish {
+    spec
+    copyStream
 }
 
 bintray.publications = described
