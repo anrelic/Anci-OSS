@@ -78,7 +78,6 @@ subprojects {
             issueTrackerUrl = 'https://github.com/anrelic/Anci-OSS/issues'
 
             githubRepo = 'anrelic/Anci-OSS'
-            githubReleaseNotesFile = 'README.md'
 
             version {
                 released = new Date()
