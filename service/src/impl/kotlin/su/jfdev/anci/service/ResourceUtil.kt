@@ -15,11 +15,11 @@ fun Class<*>.resources(dir: String): Stream<Path> = clazzLoader
         .getResources(dir)
         .toList()
         .stream()
-        .flatMap { it[dir].walk() }
+        .flatMap { it.load(dir).walk() }
 
-private operator fun URL.get(dir: String) = toURI()[dir]
+private fun URL.load(dir: String) = toURI().load(dir)
 
-private operator fun URI.get(dir: String): Path = when (scheme) {
+private fun URI.load(dir: String): Path = when (scheme) {
     "jar" -> fileSystem.getPath("/$dir")
     else  -> Paths.get(this)
 }

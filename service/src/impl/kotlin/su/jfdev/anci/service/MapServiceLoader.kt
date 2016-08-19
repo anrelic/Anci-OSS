@@ -1,17 +1,23 @@
 package su.jfdev.anci.service
 
 import org.apache.logging.log4j.*
+import su.jfdev.anci.service.ServiceLoader.Default.SOURCE
 
-class MapServiceLoader(override val source: ServiceSource, val services: Map<Class<*>, Set<Class<*>>>): ServiceLoader {
-    override fun <T: Any> get(clazz: Class<T>): Sequence<T> = find(clazz).mapNotNull {
+class ServiceLoaderImpl(override val source: ServiceSource): ServiceLoader {
+    override fun with(source: ServiceSource): ServiceLoader = ServiceLoaderImpl(source)
+    constructor(): this(SOURCE)
+
+    val services: Map<String, Set<Class<*>>> = source.paths.services()
+
+    override fun <T: Any> get(clazz: Class<T>): Sequence<T> = find(clazz.canonicalName).mapNotNull {
         it.convert(clazz)?.load()
     }
 
-    override fun unchecked(clazz: Class<*>): Sequence<Any> = find(clazz).mapNotNull {
+    override fun get(name: String): Sequence<Any> = find(name).mapNotNull {
         it.load()
     }
 
-    private fun find(clazz: Class<*>) = services[clazz].orEmpty().asSequence()
+    private fun find(name: String) = services[name].orEmpty().asSequence()
 
     private fun <T> Class<*>.convert(clazz: Class<T>): Class<out T>? = when(clazz.isAssignableFrom(this)){
         true -> asSubclass(clazz)
@@ -29,7 +35,7 @@ class MapServiceLoader(override val source: ServiceSource, val services: Map<Cla
     }
 
     companion object {
-        val LOG: Logger = LogManager.getLogger(MapServiceLoader::class.java)
+        val LOG: Logger = LogManager.getLogger(ServiceLoaderImpl::class.java)
     }
 
 }

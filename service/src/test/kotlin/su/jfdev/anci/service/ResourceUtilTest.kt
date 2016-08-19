@@ -32,7 +32,7 @@ class ResourceUtilTest {
             map.isEmpty()
         }
 
-        val value = map[jClass] ?: fail("Map doesn't contain class")
+        val value = map[jClass.canonicalName] ?: fail("Map doesn't contain class")
         value.single() shouldEqual impl
     }
 
