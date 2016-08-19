@@ -1,4 +1,5 @@
 dependencies {
     compile lib.kotlintest,
-            lib.jupiter["api"]
+            lib.jupiter["api"],
+            lib.junit["platform"]
 }
