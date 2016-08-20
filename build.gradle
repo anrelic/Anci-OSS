@@ -15,7 +15,8 @@ buildscript {
                 "org.jetbrains.dokka:dokka-gradle-plugin:${versions.dokka}",
                 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7',
                 lib.junit["plugin"],
-                "su.jfdev.gradle.struct:gradle-struct:1.5.1"
+                files("C:\\Workspace\\gradle-service\\build\\libs\\gradle-struct-1.5.1.jar")
+//                "su.jfdev.gradle.struct:gradle-struct:1.5.1"
     }
 }
 
@@ -56,31 +57,33 @@ subprojects {
         main
     }
 
-    publish {
-        api
-        main
-    }
+    afterEvaluate {
+        publish {
+            api
+            main
+        }
 
-    ext.fullname = "anci-$name"
-    bintray {
-        user = property("binuser")
-        key = property("binkey")
-        publish = true
-        publications = described
-        pkg {
-            userOrg = "anci"
-            repo = 'maven'
-            name = fullname
-            licenses = ['MIT']
+        def fullname = "anci-$name"
+        bintray {
+            user = property("binuser")
+            key = property("binkey")
+            publish = true
+            publications = described
+            pkg {
+                userOrg = "anci"
+                repo = 'maven'
+                name = fullname
+                licenses = ['MIT']
 
-            vcsUrl = 'https://github.com/anrelic/Anci-OSS.git'
-            websiteUrl = 'https://github.com/anrelic/Anci-OSS'
-            issueTrackerUrl = 'https://github.com/anrelic/Anci-OSS/issues'
+                vcsUrl = 'https://github.com/anrelic/Anci-OSS.git'
+                websiteUrl = 'https://github.com/anrelic/Anci-OSS'
+                issueTrackerUrl = 'https://github.com/anrelic/Anci-OSS/issues'
 
-            githubRepo = 'anrelic/Anci-OSS'
+                githubRepo = 'anrelic/Anci-OSS'
 
-            version {
-                released = new Date()
+                version {
+                    released = new Date()
+                }
             }
         }
     }
