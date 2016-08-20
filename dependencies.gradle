@@ -16,10 +16,10 @@ ext.lib = [
                 for: 'org.eclipse.collections:eclipse-collections-forkjoin:7.1.0'
         ],
         anci: [
-                service: "$anci-service-%s:0.1.2",
-                event  : "$anci-event-%s:0.1.2",
-                test   : "$anci-test-%s:0.1.2",
-                util   : "$anci-util-%s:0.1.2"
+                service: anci + "service:0.2.0:%s",
+                event  : anci + "event:0.1.0:%s",
+                test   : anci + "test:0.1.0:%s",
+                util   : anci + "util:0.1.0:%s"
         ],
         kotlin      : [
                 runtime: "org.jetbrains.kotlin:kotlin-runtime:${versions.kotlin}",
