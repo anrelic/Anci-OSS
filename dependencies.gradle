@@ -7,7 +7,7 @@ ext.versions = [
         dokka: "0.9.9"
 ]
 
-def anci = "su.jfdev.anci:"
+final def anci = "su.jfdev.anci:"
 ext.lib = [
         ecollections: [
                 api: 'org.eclipse.collections:eclipse-collections-api:7.1.0',
@@ -17,7 +17,7 @@ ext.lib = [
         ],
         anci: [
                 service: anci + "service:0.2.0:%s",
-                event  : anci + "event:0.2.1:%s",
+                event  : anci + "event:0.2.2:%s",
                 test   : anci + "test:0.1.0:%s",
                 util   : anci + "util:0.1.0:%s"
         ],
