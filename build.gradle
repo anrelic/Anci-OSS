@@ -28,7 +28,7 @@ subprojects {
     apply plugin: 'com.jfrog.bintray'
 
     group 'su.jfdev.anci'
-    version '0.1.0'
+    version '0.1.0-r2'
 
     repositories {
         jcenter()
