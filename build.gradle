@@ -58,8 +58,8 @@ subprojects {
 
     afterEvaluate {
         publish {
-            api
-            main
+            api.full
+            main.full
         }
 
         def fullname = "anci-$name"

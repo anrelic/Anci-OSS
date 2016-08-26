@@ -6,8 +6,8 @@ implementations {
 }
 
 publish {
-    spec
-    copyStream
+    spec.out
+    copyStream.out
 }
 
 bintray.publications = described

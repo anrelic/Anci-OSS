@@ -5,8 +5,8 @@ implementations {
 }
 
 publish {
-    spec
-    impl
+    spec.out
+    impl.out
 }
 
 bintray.publications = described
