@@ -15,8 +15,7 @@ buildscript {
                 "org.jetbrains.dokka:dokka-gradle-plugin:${versions.dokka}",
                 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7',
                 lib.junit["plugin"],
-                files("C:\\Workspace\\gradle-service\\build\\libs\\gradle-struct-1.5.1.jar")
-//                "su.jfdev.gradle.struct:gradle-struct:1.5.1"
+                "su.jfdev.gradle.struct:gradle-struct:1.6.0"
     }
 }
 
