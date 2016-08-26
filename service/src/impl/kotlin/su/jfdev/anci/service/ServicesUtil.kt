@@ -20,5 +20,6 @@ private fun Path.implementations(): Set<Class<*>> = lines(this)
 private fun classOrNull(className: String): Class<*>? = try {
     Class.forName(className)
 } catch (e: Throwable) {
+    ServiceLoaderImpl.LOG.warn("Failed loading class by class name $className", e)
     null
 }
