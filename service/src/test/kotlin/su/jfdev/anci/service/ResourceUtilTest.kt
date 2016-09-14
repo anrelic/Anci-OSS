@@ -1,7 +1,7 @@
 package su.jfdev.anci.service
 
 import org.junit.jupiter.api.*
-import su.jfdev.util.fluent.*
+import su.jfdev.test.fluent.*
 import kotlin.test.*
 
 class ResourceUtilTest {
