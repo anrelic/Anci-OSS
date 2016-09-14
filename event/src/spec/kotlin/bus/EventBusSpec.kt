@@ -1,26 +1,34 @@
 package bus
 
-import org.assertj.core.api.Assertions
-import org.junit.jupiter.api.*
+import io.kotlintest.*
+import io.kotlintest.matchers.*
+import io.kotlintest.specs.*
 import su.jfdev.anci.event.*
+import su.jfdev.test.kotlintest.*
 import java.util.*
 
-abstract class EventBusSpec {
-    abstract val bus: EventBus<MutableList<String>>
-    @Test fun `should handle all registered listeners`() {
-        given@
-        val target: MutableList<String> = Collections.synchronizedList<String>(ArrayList())
-        val appended = arrayOf("first","second")
-        register@
-        appended.forEach { text ->
-            bus.register {
+abstract class EventBusSpec(val bus: EventBus<MutableList<String>>): FreeSpec(), Eventually {
+    val appended = arrayOf("first", "second")
+
+    init {
+        "should handle all registered listeners" - {
+            val target = Collections.synchronizedList<String>(ArrayList())
+            for (text in appended) bus.register {
                 it += text
             }
+            "by sync" {
+                bus sync target
+                target should contain only appended
+            }
+            "by handle" {
+                bus handle target
+                Repeat.second {
+                    target should contain only appended
+                }
+            }
         }
-        handleOrSync@
-        bus.sync(target)
-        checkOrWait@
-        Assertions.assertThat(target).contains(*appended)
     }
+
+    override val oneInstancePerTest = true
 }
 

@@ -4,7 +4,7 @@ import org.junit.jupiter.api.*
 import su.jfdev.anci.event.*
 import su.jfdev.anci.event.Prioritized.*
 import su.jfdev.anci.event.Prioritized.Priority.*
-import su.jfdev.util.fluent.*
+import su.jfdev.test.fluent.*
 
 abstract class EventLoopSpec {
     abstract val eventLoop: EventLoop
@@ -15,8 +15,8 @@ abstract class EventLoopSpec {
             received = event
         }
         eventLoop.handle(listOf(listener), "String")
-        repeat(100){
-            if(received != "String") Thread.sleep(10) else return
+        repeat(100) {
+            if (received != "String") Thread.sleep(10) else return
         }
     }
 
@@ -34,11 +34,11 @@ abstract class EventLoopSpec {
         val more = PrioritizedHandler(High) {
             number++ shouldBe 0
         }
-        val less = PrioritizedHandler(Medium){
+        val less = PrioritizedHandler(Medium) {
             number shouldBe 1
             number += 2
         }
-        val min = PrioritizedHandler(Low){
+        val min = PrioritizedHandler(Low) {
             number shouldBe 3
             number += 100
         }

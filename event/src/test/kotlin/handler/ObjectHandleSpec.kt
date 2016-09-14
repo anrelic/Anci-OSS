@@ -1,17 +1,21 @@
 package handler
 
-import org.assertj.core.api.Assertions
-import org.junit.jupiter.api.*
+import io.kotlintest.matchers.*
+import io.kotlintest.specs.*
 import su.jfdev.anci.event.handler.*
+import su.jfdev.test.kotlintest.*
 import java.util.*
 
-class ObjectHandleSpec {
-    @Test fun `should execute all handler methods`() {
-        val list = ArrayList<Any>()
-        for (listener in listeners<MutableList<*>>(this))
-            listener(list)
-        Assertions.assertThat(list).containsOnly("first", "other", "last")
-
+class ObjectHandleSpec: FreeSpec() {
+    init {
+        "should find all listeners by EventHandler" - {
+            val list = ArrayList<Any>()
+            val listeners = listeners<MutableList<*>>(this)
+            "should execute all handler methods" {
+                for (listener in listeners) listener(list)
+                list should contain only listOf("first", "other", "last")
+            }
+        }
     }
 
     @EventHandler fun MutableList<Any>.`add first`() {
