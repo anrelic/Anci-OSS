@@ -3,6 +3,7 @@
 package su.jfdev.test.kotlintest
 
 import io.kotlintest.matchers.*
+import java.util.concurrent.atomic.*
 
 object __DummyForMatchers: Matchers
 
@@ -21,4 +22,12 @@ inline infix fun <T> ContainWrapper<out Collection<T>>.all(elements: Array<T>) =
 
 inline infix fun <T> ContainWrapper<out Collection<T>>.all(elements: Iterable<T>) = matching {
     for (element in elements) element(element)
+}
+
+inline infix fun HaveWrapper<AtomicInteger>.value(expected: Int) = matching {
+    value.get() shouldBe expected
+}
+
+inline infix fun <T> HaveWrapper<AtomicReference<T>>.value(expected: T) = matching {
+    value.get() shouldBe expected
 }
