@@ -23,11 +23,8 @@ dependencies {
     compile lib.kotlin["reflect"],
             lib["guava"]
 
-    specCompile lib.jupiter["api"],
-            lib["kotlintest"],
+    specCompile lib["kotlintest"],
             project(":test")
-
-    testRuntime lib.jupiter["engine"]
 
     copyStreamCompile lib.kotlin["jdk8"]
 

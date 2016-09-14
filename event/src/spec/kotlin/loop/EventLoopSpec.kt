@@ -1,6 +1,6 @@
 package loop
 
-import org.junit.jupiter.api.*
+import org.junit.*
 import su.jfdev.anci.event.*
 import su.jfdev.anci.event.Prioritized.*
 import su.jfdev.anci.event.Prioritized.Priority.*

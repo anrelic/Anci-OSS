@@ -1,29 +1,26 @@
 package bus
 
-import io.kotlintest.*
 import io.kotlintest.matchers.*
 import io.kotlintest.specs.*
 import su.jfdev.anci.event.*
 import su.jfdev.test.kotlintest.*
-import java.util.*
+import java.util.concurrent.atomic.*
 
-abstract class EventBusSpec(val bus: EventBus<MutableList<String>>): FreeSpec(), Eventually {
-    val appended = arrayOf("first", "second")
-
+abstract class EventBusSpec(val bus: EventBus<Int>): FreeSpec() {
     init {
         "should handle all registered listeners" - {
-            val target = Collections.synchronizedList<String>(ArrayList())
-            for (text in appended) bus.register {
-                it += text
+            val target = AtomicInteger()
+            bus.register {
+                target.set(it)
             }
             "by sync" {
-                bus sync target
-                target should contain only appended
+                bus sync 133
+                target should have value 133
             }
             "by handle" {
-                bus handle target
+                bus handle 145
                 Repeat.second {
-                    target should contain only appended
+                    target should have value 145
                 }
             }
         }

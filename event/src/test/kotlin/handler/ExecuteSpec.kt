@@ -2,7 +2,7 @@
 
 package handler
 
-import org.junit.jupiter.api.*
+import org.junit.*
 import su.jfdev.anci.event.handler.*
 import kotlin.test.*
 

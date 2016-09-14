@@ -1,6 +1,6 @@
 package su.jfdev.anci.service
 
-import org.junit.jupiter.api.*
+import org.junit.*
 import su.jfdev.test.fluent.*
 import kotlin.test.*
 

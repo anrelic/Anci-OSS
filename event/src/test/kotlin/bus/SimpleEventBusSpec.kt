@@ -1,7 +1,6 @@
 package bus
 
-import su.jfdev.anci.event.*
-import su.jfdev.anci.event.stream.*
-import java.util.concurrent.*
+import su.jfdev.anci.event.EventService.Companion.createBus
+import su.jfdev.anci.event.EventService.Companion.createLoop
 
-class SimpleEventBusSpec: EventBusSpec(bus = SimpleEventBus(StreamEventLoop, CopyOnWriteArraySet()))
+class SimpleEventBusSpec: EventBusSpec(bus = createBus(eventLoop = createLoop()))

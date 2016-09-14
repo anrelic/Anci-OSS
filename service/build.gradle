@@ -18,8 +18,7 @@ require {
 dependencies {
     apiCompile lib.kotlin["std"]
 
-    specCompile lib.jupiter["api"],
-            lib["kotlintest"],
+    specCompile lib["kotlintest"],
             project(":test")
 
     implCompile lib.kotlin["reflect"],
