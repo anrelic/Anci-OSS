@@ -5,6 +5,7 @@ import su.jfdev.test.immutability.Immutability.*
 import kotlin.reflect.*
 import kotlin.test.*
 
+//TODO: configure expected exception
 fun <T> SuiteBuilder<T>.cannot(action: String, validator: (T) -> Unit) = fail("cannot $action",
                                                                               Exception::class, validator)
 
