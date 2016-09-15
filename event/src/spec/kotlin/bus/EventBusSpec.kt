@@ -3,7 +3,7 @@ package bus
 import io.kotlintest.matchers.*
 import io.kotlintest.specs.*
 import su.jfdev.anci.event.*
-import su.jfdev.test.features.Repeatable.Companion.millis
+import su.jfdev.test.features.Cyclic.Companion.millis
 import su.jfdev.test.matchers.*
 import java.util.concurrent.atomic.*
 
