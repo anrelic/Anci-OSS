@@ -1,6 +1,6 @@
 @file:Suppress("NOTHING_TO_INLINE")
 
-package su.jfdev.test.kotlintest
+package su.jfdev.test.matchers
 
 import io.kotlintest.matchers.*
 import java.util.concurrent.atomic.*

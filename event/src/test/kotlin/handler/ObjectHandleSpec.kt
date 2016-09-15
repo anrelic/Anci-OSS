@@ -3,7 +3,7 @@ package handler
 import io.kotlintest.matchers.*
 import io.kotlintest.specs.*
 import su.jfdev.anci.event.handler.*
-import su.jfdev.test.kotlintest.*
+import su.jfdev.test.matchers.*
 import java.util.*
 
 class ObjectHandleSpec: FreeSpec() {

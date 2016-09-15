@@ -1,4 +1,4 @@
-package su.jfdev.test.kotlintest
+package su.jfdev.test.features
 
 import io.kotlintest.*
 import java.util.concurrent.TimeUnit.*

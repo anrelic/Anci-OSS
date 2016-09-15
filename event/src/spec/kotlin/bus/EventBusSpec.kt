@@ -3,7 +3,8 @@ package bus
 import io.kotlintest.matchers.*
 import io.kotlintest.specs.*
 import su.jfdev.anci.event.*
-import su.jfdev.test.kotlintest.*
+import su.jfdev.test.features.*
+import su.jfdev.test.matchers.*
 import java.util.concurrent.atomic.*
 
 abstract class EventBusSpec(val bus: EventBus<Int>): FreeSpec() {
