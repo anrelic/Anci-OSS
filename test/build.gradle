@@ -1,6 +1,6 @@
 version "0.4.0-r1"
 require {
-    from(":test") {
+    from(":util") {
         sources "main"
     }
 }
