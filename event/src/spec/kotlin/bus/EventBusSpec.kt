@@ -3,7 +3,7 @@ package bus
 import io.kotlintest.matchers.*
 import io.kotlintest.specs.*
 import su.jfdev.anci.event.*
-import su.jfdev.test.features.*
+import su.jfdev.test.features.Repeatable.Companion.millis
 import su.jfdev.test.matchers.*
 import java.util.concurrent.atomic.*
 
@@ -20,9 +20,9 @@ abstract class EventBusSpec(val bus: EventBus<Int>): FreeSpec() {
             }
             "by handle" {
                 bus handle 145
-                Repeat.second {
+                millis(100) {
                     target should have value 145
-                }
+                } repeat 5
             }
         }
     }
