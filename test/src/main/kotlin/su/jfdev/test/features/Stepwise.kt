@@ -49,18 +49,13 @@ interface Stepwise {
         }
     }
 
-    fun <R> take(action: String, block: () -> R) = AtomicReference<R>().apply {
-        after(action) {
-            set(block())
+    fun <R> take(action: String, block: () -> R): StepResult<R> {
+        val reference = AtomicReference<R>().apply {
+            after(action) {
+                set(block())
+            }
         }
-    }
-
-    fun <R> AtomicReference<R>.should(action: String, block: R.() -> Boolean) = this@Stepwise.should(action) {
-        get().block()
-    }
-
-    fun <R> AtomicReference<R>.shouldNot(action: String, block: R.() -> Boolean) = this@Stepwise.shouldNot(action) {
-        get().block()
+        return StepResult(reference)
     }
 
     class Session(root: TestSuite, name: String): Stepwise {
