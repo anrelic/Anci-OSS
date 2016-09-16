@@ -4,7 +4,6 @@ import io.kotlintest.*
 import io.kotlintest.TestSuite.Companion.empty
 import io.kotlintest.specs.*
 import su.jfdev.anci.util.syntax.*
-import java.util.concurrent.atomic.*
 import kotlin.reflect.*
 import kotlin.test.*
 
@@ -49,13 +48,8 @@ interface Stepwise {
         }
     }
 
-    fun <R> take(action: String, block: () -> R): StepResult<R> {
-        val reference = AtomicReference<R>().apply {
-            after(action) {
-                set(block())
-            }
-        }
-        return StepResult(reference)
+    fun <R> take(action: String, block: () -> R) = after("take $action", {}).run {
+        StepResult(block)
     }
 
     class Session(root: TestSuite, name: String): Stepwise {

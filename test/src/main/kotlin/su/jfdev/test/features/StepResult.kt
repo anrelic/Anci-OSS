@@ -1,15 +1,7 @@
 package su.jfdev.test.features
 
-import java.util.concurrent.atomic.*
+class StepResult<R>(action: () -> R) {
+    val result: R by lazy(action)
 
-class StepResult<R>(val reference: AtomicReference<R>) {
-    val result: R get() = reference.get()
-
-    fun use(stepwise: R.() -> Unit) = then {
-        it.stepwise()
-    }
-
-    fun then(stepwise: StepResult<R>.(R) -> Unit) = apply {
-        stepwise(result)
-    }
+    infix fun then(stepwise: StepResult<R>.() -> Unit) = apply(stepwise)
 }
