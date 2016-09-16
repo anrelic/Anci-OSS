@@ -4,6 +4,7 @@ import io.kotlintest.*
 import io.kotlintest.TestSuite.Companion.empty
 import io.kotlintest.specs.*
 import su.jfdev.anci.util.syntax.*
+import java.util.concurrent.atomic.*
 import kotlin.reflect.*
 import kotlin.test.*
 
@@ -48,6 +49,19 @@ interface Stepwise {
         }
     }
 
+    fun <R> take(action: String, block: () -> R) = AtomicReference<R>().apply {
+        after(action) {
+            set(block())
+        }
+    }
+
+    fun <R> AtomicReference<R>.should(action: String, block: R.() -> Boolean) = this@Stepwise.should(action) {
+        get().block()
+    }
+
+    fun <R> AtomicReference<R>.shouldNot(action: String, block: R.() -> Boolean) = this@Stepwise.shouldNot(action) {
+        get().block()
+    }
 
     class Session(root: TestSuite, name: String): Stepwise {
         private var last = BeforeAction(suite = empty(name)).apply {
