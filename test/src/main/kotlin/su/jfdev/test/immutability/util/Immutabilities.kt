@@ -23,9 +23,7 @@ object Immutabilities {
     }
 
     val iterable = SuiteBuilder.build<Iterable<*>>("iterable") {
-        cannot(iterator, "iterator") {
-            (this as MutableIterable<*>).iterator()
-        }
+        cannot(iterator, "iterator") { iterator() }
     }
 
     fun <K, V> entry(value: () -> V) = SuiteBuilder.build<Entry<K, V>>("entry") {
