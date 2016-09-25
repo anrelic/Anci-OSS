@@ -48,8 +48,8 @@ interface Stepwise {
         }
     }
 
-    fun <R> take(action: String, block: () -> R) = after("take $action", {}).run {
-        StepResult(block)
+    fun <R> take(action: String, block: () -> R) = StepResult(block) finally {
+        after("take $action") { it.result }
     }
 
     class Session(root: TestSuite, name: String): Stepwise {

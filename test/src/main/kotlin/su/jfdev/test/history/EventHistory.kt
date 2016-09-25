@@ -5,11 +5,13 @@ package su.jfdev.test.history
 import su.jfdev.anci.util.syntax.*
 import java.util.concurrent.*
 
-class EventHistory<T>(val register: ((T) -> Unit) -> Unit) {
+class EventHistory<T>(register: ((T) -> Unit) -> Unit, private val delegate: MutableCollection<T>): Collection<T> by delegate {
+    constructor(register: ((T) -> Unit) -> Unit): this(register, delegate = CopyOnWriteArrayList())
     var active = true
-    private val events = CopyOnWriteArrayList<T>().apply {
+
+    init {
         register {
-            if (active) add(it)
+            if (active) delegate += it
         }
     }
 
@@ -18,8 +20,6 @@ class EventHistory<T>(val register: ((T) -> Unit) -> Unit) {
     }
 
     inline infix fun <R> then(using: EventCatcher<T>.() -> R) = EventCatcher(this).run(using)
-    operator fun iterator(): Iterator<T> = events.iterator()
 
-    companion object {
-    }
+    companion object
 }

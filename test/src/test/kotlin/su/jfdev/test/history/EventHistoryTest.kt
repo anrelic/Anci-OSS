@@ -9,23 +9,21 @@ class EventHistoryTest: Stepwise.Spec() {
     init {
         stepwise("listening") {
             val listeners: MutableList<(String) -> Unit> = ArrayList()
-            val history = EventHistory<String> {
-                listeners += it
-            }
-
-            fun fire(text: String) {
-                for (listener in listeners) listener(text)
-            }
-            after("fire two messages") {
-                fire("1")
-                fire("2")
-            }
-            test("should catch all") {
-                val historyList = Sequence { history.iterator() }.toList()
-                historyList should contain all listOf("2", "1")
+            take("EventHistory") {
+                EventHistory<String> {
+                    listeners += it
+                }
+            } then {
+                after("fire two messages") {
+                    for (listener in listeners) {
+                        listener("1")
+                        listener("2")
+                    }
+                }
+                test("should catch all") {
+                    result should contain all listOf("2", "1")
+                }
             }
         }
-
-
     }
 }
