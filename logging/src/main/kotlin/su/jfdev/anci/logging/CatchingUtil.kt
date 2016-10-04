@@ -17,15 +17,15 @@ inline fun <R, reified T: Throwable> Logger.catching(level: LogLevel, block: () 
     error("should exit by doOrCatch")
 }
 
-inline fun Logger.unchecked(block: () -> Unit): Unit = catch<RuntimeException>(block)
-inline fun Logger.exception(block: () -> Unit): Unit = catch<Exception>(block)
-inline fun Logger.throwable(block: () -> Unit): Unit = catch<Throwable>(block)
+infix inline fun Logger.unchecked(block: () -> Unit): Unit = catch<RuntimeException>(block)
+infix inline fun Logger.exception(block: () -> Unit): Unit = catch<Exception>(block)
+infix inline fun Logger.throwable(block: () -> Unit): Unit = catch<Throwable>(block)
 
 inline fun Logger.unchecked(level: LogLevel, block: () -> Unit): Unit = catch<RuntimeException>(level, block)
 inline fun Logger.exception(level: LogLevel, block: () -> Unit): Unit = catch<Exception>(level, block)
 inline fun Logger.throwable(level: LogLevel, block: () -> Unit): Unit = catch<Throwable>(level, block)
 
-inline fun <reified T: Throwable> Logger.catch(block: () -> Unit): Unit = catch<T>(ERROR, block)
+infix inline fun <reified T: Throwable> Logger.catch(block: () -> Unit): Unit = catch<T>(ERROR, block)
 inline fun <reified T: Throwable> Logger.catch(level: LogLevel, block: () -> Unit): Unit = doOrCatch<T>(level, block) {
 }
 
