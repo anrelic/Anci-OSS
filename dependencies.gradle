@@ -18,9 +18,9 @@ ext.lib = [
         ],
         anci        : [
                 logging: anci + "logging-%s:0.2.0",
-                service: anci + "service-%s:0.2.0-r2",
-                event  : anci + "event-%s:0.2.3",
-                test   : anci + "test-%s:0.6.0",
+                service: anci + "service-%s:0.2.0-r3",
+                event  : anci + "event-%s:0.2.3-r1",
+                test   : anci + "test-%s:0.6.0-r1",
                 util   : anci + "util-%s:0.2.1"
         ],
         kotlin      : [
