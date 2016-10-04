@@ -2,5 +2,6 @@ rootProject.name = 'Anci-OSS'
 include 'service',
         'event',
         'util',
-        "test"
+        'test',
+        'logging'
 
