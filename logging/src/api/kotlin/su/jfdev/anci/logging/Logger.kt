@@ -8,6 +8,6 @@ interface Logger {
     fun print(type: LogLevel, throwable: Throwable)
 
     companion object {
-        operator fun get(name: String) = LoggingService.adapter(name)
+        operator fun get(name: String) = LoggingService.logger(name)
     }
 }

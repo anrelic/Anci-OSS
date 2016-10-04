@@ -1,5 +1,5 @@
 package su.jfdev.anci.logging
 
 object FlatLoggingService: LoggingService {
-    override fun adapter(name: String) = FlatLogger(name)
+    override fun logger(name: String) = FlatLogger(name)
 }
