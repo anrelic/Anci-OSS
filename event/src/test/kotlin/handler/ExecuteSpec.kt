@@ -9,13 +9,10 @@ import kotlin.test.*
 class ExecuteSpec {
     var executed: Boolean = false
     @Test fun `should execute block inside method`() {
-        given@
         assertFalse { executed }
 
-        whenn@
         val listener: (Boolean) -> Unit = ExecuteSpec::execute.listener(this)
 
-        then@
         listener(true)
         assertTrue { executed }
 
