@@ -1,0 +1,25 @@
+version "0.1.0"
+implementations {
+    slf4j
+    jul
+    flat
+}
+
+publish {
+    slf4j.out
+    jul.out
+    flat.out
+}
+
+bintray.publications = described
+
+require {
+    from(":service") {
+        inherit "impl"
+        sources "main", "api"
+    }
+}
+
+dependencies {
+    slf4jCompile lib["slf4j"]
+}
