@@ -4,6 +4,11 @@ package su.jfdev.anci.logging
 
 import su.jfdev.anci.logging.LogLevel.*
 
+/**
+ * As example Logger["foo"] + "bar" similar Logger["foo.bar"]
+ */
+operator fun Logger.plus(subPath: String) = Logger["$name.$subPath"]
+
 inline infix fun Logger.info(throwable: Throwable) = log(INFO, throwable)
 inline infix fun Logger.warn(throwable: Throwable) = log(WARN, throwable)
 inline infix fun Logger.error(throwable: Throwable) = log(ERROR, throwable)
