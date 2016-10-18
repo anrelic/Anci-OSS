@@ -22,7 +22,7 @@ abstract class CoverageSpec<out T>(val included: Collection<T>,
                 }
             }
         }
-        "should be empty with 0 size" - {
+        "should be empty with 0 size" {
             if (coverage.isEmpty()) {
                 coverage should have size 0
             }
