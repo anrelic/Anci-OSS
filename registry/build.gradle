@@ -1,0 +1,26 @@
+implementations {
+    spec
+    impl
+}
+
+require {
+    from(":service") {
+        inherit "impl"
+        source "main", "api"
+    }
+    from(":event") {
+        inherit "copyStream"
+        source "main", "api"
+    }
+    from(":util") {
+        source "api"
+        source "main", "api"
+    }
+    from(":test") {
+        source "main", "spec"
+    }
+}
+
+dependencies {
+    specCompile lib["kotlintest"]
+}
