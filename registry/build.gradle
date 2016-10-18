@@ -3,6 +3,11 @@ implementations {
     impl
 }
 
+publish {
+    spec.out
+    impl.out
+}
+
 require {
     from(":service") {
         inherit "impl"

@@ -3,6 +3,11 @@ implementations {
     impl
 }
 
+publish {
+    spec.out
+    impl.out
+}
+
 dependencies {
     apiCompile lib.kotlin["std"]
     specCompile lib["kotlintest"]
