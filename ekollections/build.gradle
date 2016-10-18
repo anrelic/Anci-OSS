@@ -1,0 +1,17 @@
+version "0.1.0"
+
+implementations {
+    codegen
+}
+
+dependencies {
+    apiCompile lib.ecollections["api"]
+    compile lib.ecollections["fjoin"]
+    runtime lib.ecollections["impl"]
+
+    codegenCompile lib["guava"]
+}
+
+sourceSets.each {
+    it.java.srcDirs += "src/${it.name}/codegen"
+}

@@ -3,5 +3,6 @@ include 'service',
         'event',
         'util',
         'test',
-        'logging'
+        'logging',
+        'ekollections'
 
