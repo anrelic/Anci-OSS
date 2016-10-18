@@ -7,7 +7,7 @@ implementations {
 dependencies {
     apiCompile lib.ecollections["api"]
     compile lib.ecollections["fjoin"]
-    runtime lib.ecollections["impl"]
+    compile lib.ecollections["impl"]
 
     codegenCompile lib["guava"]
 }
