@@ -1,0 +1,115 @@
+import org.eclipse.collections.api.iterator.#PRIM#Iterator
+import org.eclipse.collections.api.iterator.Mutable#PRIM#Iterator
+import su.jfdev.ekollections.util.NullPrimitives.NULL_#PRIM#
+import java.util.*
+
+inline fun #PRIM#Iterator.all(crossinline condition: (#PRIM#) -> Boolean) = none { !condition(it) }
+
+inline fun #PRIM#Iterator.none(crossinline condition: (#PRIM#) -> Boolean): Boolean {
+    only(condition) {
+        return false
+    }
+    return true
+}
+
+inline fun #PRIM#Iterator.count(crossinline condition: (#PRIM#) -> Boolean): Int {
+    var counter = 0
+    only(condition) {
+        counter++
+    }
+    return counter
+}
+
+
+inline fun #PRIM#Iterator.any(crossinline condition: (#PRIM#) -> Boolean): Boolean {
+    only(condition) {
+        return true
+    }
+    return false
+}
+
+inline fun #PRIM#Iterator.`index of last`(crossinline condition: (#PRIM#) -> Boolean): Int {
+    var last = -1
+    indexedOnly(condition) { i, it ->
+        last = i
+    }
+    return last
+}
+
+
+inline fun #PRIM#Iterator.`index of first`(crossinline condition: (#PRIM#) -> Boolean): Int {
+    indexedOnly(condition) { i, it ->
+        return i
+    }
+    return -1
+}
+
+inline fun #PRIM#Iterator.first(crossinline condition: (#PRIM#) -> Boolean) = firstOr(condition) { throw NoSuchElementException() }
+inline fun #PRIM#Iterator.firstOr(elseReturn: #PRIM#, crossinline condition: (#PRIM#) -> Boolean) = firstOr(condition) { elseReturn }
+inline fun #PRIM#Iterator.firstOr(crossinline condition: (#PRIM#) -> Boolean, elseDo: () -> #PRIM#): #PRIM# {
+    only(condition) {
+        return it
+    }
+    return elseDo()
+}
+
+inline fun #PRIM#Iterator.last(crossinline condition: (#PRIM#) -> Boolean) = lastOr(condition) { throw NoSuchElementException() }
+inline fun #PRIM#Iterator.lastOr(elseReturn: #PRIM#, crossinline condition: (#PRIM#) -> Boolean) = lastOr(condition) { elseReturn }
+inline fun #PRIM#Iterator.lastOr(crossinline condition: (#PRIM#) -> Boolean, elseDo: () -> #PRIM#): #PRIM# {
+    var existCandidate: Boolean = false
+    var candidate: #PRIM# = NULL_#PRIM#
+    only(condition) {
+        existCandidate = true
+        candidate = it
+    }
+    if (existCandidate) return candidate
+    else return elseDo()
+}
+
+
+inline fun #PRIM#Iterator.single(crossinline condition: (#PRIM#) -> Boolean) = singleOr(condition) { error("Iterator contains 0 or 2+ elements") }
+inline fun #PRIM#Iterator.singleOr(elseReturn: #PRIM#, crossinline condition: (#PRIM#) -> Boolean) = singleOr(condition) { elseReturn }
+inline fun #PRIM#Iterator.singleOr(crossinline condition: (#PRIM#) -> Boolean, elseDo: () -> #PRIM#): #PRIM# {
+    var existCandidate: Boolean = false
+    var candidate: #PRIM# = NULL_#PRIM#
+    only(condition) {
+        if (existCandidate) return elseDo()
+        else {
+            existCandidate = true
+            candidate = it
+        }
+    }
+    if (existCandidate) return candidate
+    else return elseDo()
+}
+
+inline fun #PRIM#Iterator.indexedOnly(crossinline condition: (#PRIM#) -> Boolean, procedure: (Int, #PRIM#) -> Unit) {
+    indexedIterate { i, it ->
+        if(condition(it)) procedure(i, it)
+    }
+}
+
+inline fun #PRIM#Iterator.only(crossinline condition: (#PRIM#) -> Boolean, procedure: (#PRIM#) -> Unit) {
+    iterate {
+        if(condition(it)) procedure(it)
+    }
+}
+
+inline infix fun #PRIM#Iterator.indexedIterate(procedure: (Int, #PRIM#) -> Unit) {
+    var index = 0
+    while (hasNext()) procedure(index++, next())
+}
+
+inline infix fun #PRIM#Iterator.iterate(procedure: (#PRIM#) -> Unit) {
+    while (hasNext()) procedure(next())
+}
+
+operator fun Mutable#PRIM#Iterator.iterator() = object: MutableIterator<#PRIM#> {
+    override fun next(): #PRIM# = this@iterator.next()
+    override fun hasNext(): Boolean = this@iterator.hasNext()
+    override fun remove() = this@iterator.remove()
+}
+operator fun #PRIM#Iterator.iterator() = object: Iterator<#PRIM#> {
+    override fun next(): #PRIM# = this@iterator.next()
+    override fun hasNext(): Boolean = this@iterator.hasNext()
+}
