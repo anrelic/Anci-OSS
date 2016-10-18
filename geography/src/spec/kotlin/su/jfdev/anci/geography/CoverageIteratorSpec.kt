@@ -7,13 +7,13 @@ import su.jfdev.anci.geography.services.*
 abstract class CoverageIteratorSpec<out I, T: Collection<I>>(coverage: T,
                                                              iterator: CoverageIterator<I, T>): FreeSpec() {
     init {
-        val collected = iterator.iterator(coverage).asSequence().toList()
+        val seq = Sequence { iterator.iterator(coverage) }
         "should iterate all ${coverage.size}" {
-            collected should have size coverage.size
+            seq.count() shouldBe coverage.size
         }
         "should include all" {
-            forAll(collected) {
-                coverage should contain element it
+            for (vec in seq) {
+                coverage should contain element vec
             }
         }
     }
