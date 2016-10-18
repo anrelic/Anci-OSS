@@ -6,14 +6,10 @@ import su.jfdev.anci.geography.*
 import java.util.*
 
 object IntRegionIteratorImpl: CoverageIterator<Vec3i, IntRegion> {
-    override fun iterator(coverage: IntRegion) = coverage.dynamic()
-
-    private inline fun IntRegion.dynamic(): Iterator<Vec3i> = when {
-        isEmpty() -> empty
-        else      -> nonEmpty()
+    override fun iterator(coverage: IntRegion): Iterator<Vec3i> = when {
+        coverage.isEmpty() -> Collections.emptyIterator()
+        else               -> coverage.nonEmpty()
     }
-
-    private val empty: Iterator<Vec3i> = Collections.emptyIterator()
 
     private inline fun IntRegion.nonEmpty() = object: Iterator<Vec3i> {
         private var x = from.x
