@@ -13,7 +13,7 @@ buildscript {
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}",
                 "org.jetbrains.dokka:dokka-gradle-plugin:${versions.dokka}",
-                'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7',
+                'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.2',
                 "su.jfdev.gradle.struct:gradle-struct:1.6.0"
     }
 }
@@ -58,6 +58,7 @@ subprojects {
             user = property("binuser")
             key = property("binkey")
             publish = true
+            override = true
             publications = described
             pkg {
                 userOrg = "anci"
