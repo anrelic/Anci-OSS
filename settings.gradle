@@ -4,5 +4,8 @@ include 'service',
         'util',
         'test',
         'logging',
-        'ekollections'
+        'ekollections',
+        'species',
+        'geography',
+        'registry'
 
