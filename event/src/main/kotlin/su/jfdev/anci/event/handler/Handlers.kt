@@ -16,7 +16,7 @@ annotation class EventHandler
 @Target(FUNCTION)
 annotation class PrioritizedEventHandler(val priority: Priority)
 
-fun <T: Any> EventBus<T>.register(collection: Collection<(T) -> Unit>) = collection.forEach { register(it) }
+fun <T: Any> EventBus<T>.register(listeners: Iterable<(T) -> Unit>) = listeners.forEach { register(it) }
 
 inline fun <reified T: Any> listeners(instance: Any) = listeners(instance, T::class.java)
 inline fun <reified T: Any> KFunction<Unit>.listener(instance: Any) = listener(instance, T::class.java)

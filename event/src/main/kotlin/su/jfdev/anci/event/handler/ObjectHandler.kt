@@ -2,7 +2,7 @@ package su.jfdev.anci.event.handler
 
 import java.lang.reflect.*
 
-fun <T> listeners(instance: Any, type: Class<T>): Collection<(T) -> Unit> = instance.javaClass
+fun <T> listeners(instance: Any, type: Class<T>): Iterable<(T) -> Unit> = instance.javaClass
         .declaredMethods
         .filter { it.isHandler }
         .map { it.listener(instance, type) }
