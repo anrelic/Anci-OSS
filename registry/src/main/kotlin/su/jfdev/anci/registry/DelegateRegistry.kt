@@ -1,10 +1,10 @@
 package su.jfdev.anci.registry
 
-import su.jfdev.anci.rules.*
-import su.jfdev.anci.util.*
+import su.jfdev.anci.*
+import su.jfdev.anci.util.syntax.*
 import java.util.*
 
-class DelegateRegistry<R: Unique>(override val type: Class<R>, private val delegate: Map<UUID, R>): Registry<R> {
+class DelegateRegistry<R: Identified>(override val type: Class<R>, private val delegate: Map<UUID, R>): Registry<R> {
     override val size: Int get() = delegate.size
     override val isEmpty: Boolean get() = delegate.isEmpty()
     override val values: Set<R> = UnmodifiableValuesSet(delegate.values)
@@ -12,6 +12,6 @@ class DelegateRegistry<R: Unique>(override val type: Class<R>, private val deleg
     override fun get(uuid: UUID) = delegate[uuid]
 
     companion object {
-        operator inline fun <reified R: Unique> get(delegate: Map<UUID, R>): Registry<R> = DelegateRegistry(reify(), delegate)
+        operator inline fun <reified R: Identified> get(delegate: Map<UUID, R>): Registry<R> = DelegateRegistry(reify(), delegate)
     }
 }

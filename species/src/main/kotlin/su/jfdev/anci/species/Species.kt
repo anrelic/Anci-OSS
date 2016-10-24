@@ -2,7 +2,7 @@
 
 package su.jfdev.anci.species
 
-import su.jfdev.anci.rules.*
+import su.jfdev.anci.*
 import java.util.*
 import kotlin.collections.Map.*
 import kotlin.properties.*
@@ -39,10 +39,10 @@ infix fun <T: Any> Species<T>.from(uuid: String): T = this from UUID.fromString(
 infix fun <T: Any> Species<T>.from(uuid: UUID): T = get(uuid) ?: throw NoSuchElementException("species for $uuid")
 
 /**
- * set [value] as value for [value.uuid]
+ * set [value] as value for [Identified.uuid]
  * @return [value]
  */
-operator fun <T: Unique> SpeciesBuilder<T>.get(value: T) = get(value.uuid, value)
+operator fun <T: Identified> SpeciesBuilder<T>.get(value: T) = get(value.uuid, value)
 
 /**
  * set [value] as value for [uuid]
@@ -60,7 +60,7 @@ inline operator fun <T: Any> SpeciesBuilder<T>.invoke(uuid: UUID, value: () -> T
     return species
 }
 
-@Suppress("CAST_NEVER_SUCCEEDS")
+@Suppress("UNCHECKED_CAST")
 fun <T: Any> emptySpecies(): Species<T> = EMPTY_SPECIES as Species<T>
 
 object EMPTY_SPECIES: Species<Any> {

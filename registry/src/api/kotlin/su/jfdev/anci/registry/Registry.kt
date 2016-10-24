@@ -1,12 +1,16 @@
 package su.jfdev.anci.registry
 
-import su.jfdev.anci.rules.*
+import su.jfdev.anci.*
 import java.util.*
 
 /**
- * Unmodifiable checked map container
+ *  Similar to Map<UUID,V> container with unique values
+ *
+ * Any implementation:
+ * 1) should be read-only
+ * 2) should ensure that key equals [Identified.uuid] of value and vice-versa
  */
-interface Registry<R: Unique>: Iterable<R> {
+interface Registry<R: Identified>: Iterable<R> {
     /**
      * Class of [R]
      */
@@ -23,14 +27,14 @@ interface Registry<R: Unique>: Iterable<R> {
     val values: Set<R>
 
     /**
-     * True if contains key [uuid]
-     */
-    operator fun contains(uuid: UUID): Boolean
-
-    /**
      * Registration by [uuid]
      */
     operator fun get(uuid: UUID): R?
+
+    /**
+     * True if contains key [uuid]
+     */
+    operator fun contains(uuid: UUID): Boolean
 
     /**
      * True if contains [registration]

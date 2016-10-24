@@ -13,7 +13,7 @@ class RegistrarImpl<F, R: Registration<R>>(adapter: RegistrarAdapter<F, R>): Reg
     private val _sources = ConcurrentHashMap<F, R>()
 
     override val registry = DelegateRegistry(type = adapter.type, delegate = _registry)
-    override val sources = _sources.immutable()
+    override val sources = _sources.unmodifiable()
 
     private val handler = adapter.handler(this)
 

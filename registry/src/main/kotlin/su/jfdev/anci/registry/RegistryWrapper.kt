@@ -1,9 +1,9 @@
 package su.jfdev.anci.registry
 
-import su.jfdev.anci.rules.*
+import su.jfdev.anci.*
 import java.util.*
 
-interface RegistryWrapper<R: Unique>: Registry<R> {
+interface RegistryWrapper<R: Identified>: Registry<R> {
     val registry: Registry<R>
     override val type: Class<R> get() = registry.type
     override val size: Int get() = registry.size
