@@ -26,10 +26,20 @@ inline fun <T> T.`when other`(exclusion: T, block: (T) -> Unit): T = finally {
     if (it !== exclusion) block(it)
 }
 
-inline fun <T> T.`when is`(inclusion: T, block: (T) -> Unit): T = finally {
+inline fun <T> T.`when equal`(inclusion: T, block: (T) -> Unit): T = finally {
     if (it == inclusion) block(it)
 }
 
-inline fun <T> T.`when is not`(exclusion: T, block: (T) -> Unit): T = finally {
+inline fun <T> T.`when not equal`(exclusion: T, block: (T) -> Unit): T = finally {
     if (it != exclusion) block(it)
 }
+
+inline fun <reified T> Any?.`when is`(action: (T) -> Unit) {
+    if (this != null && this is T) return action(this)
+}
+
+inline fun <reified T> Any?.`when is not`(action: (T) -> Unit) {
+    if (this != null && this is T) return action(this)
+}
+
+inline fun <reified T: Any> reify() = T::class.java
