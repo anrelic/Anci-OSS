@@ -1,8 +1,8 @@
 package su.jfdev.anci.registry.registrar
 
+import su.jfdev.anci.*
 import su.jfdev.anci.registry.*
 import su.jfdev.anci.registry.exceptions.*
-import su.jfdev.anci.rules.*
 
 interface Registrar<S, R: Registration<R>> {
     val registry: Registry<R>
@@ -19,7 +19,7 @@ interface Registrar<S, R: Registration<R>> {
     /**
      * Remove [registration] from [registry]
      * @return false if [registration] already unregistered
-     * @throws RegistrationConflictException if [Unique.uuid] bound by other session
+     * @throws RegistrationConflictException if [Identified.uuid] bound by other session
      */
     infix fun unregister(registration: R): Boolean
 }
