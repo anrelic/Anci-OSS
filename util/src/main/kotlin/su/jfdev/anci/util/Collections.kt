@@ -7,9 +7,9 @@ import java.util.Collections.*
  * Jamefrus and his team on 27.06.2016.
  */
 
-fun <T> MutableList<T>.immutable(): List<T> = unmodifiableList(this)
-fun <K, V> MutableMap<K, V>.immutable(): Map<K, V> = unmodifiableMap(this)
+fun <T> MutableList<T>.unmodifiable(): List<T> = unmodifiableList(this)
 
-fun <T> MutableList<T>.sync(): MutableList<T> = synchronizedList<T>(this)
+fun <K, V> MutableMap<K, V>.unmodifiable(): Map<K, V> = unmodifiableMap(this)
 
-fun <T> syncList(): MutableList<T> = ArrayList<T>().sync()
+fun <T> MutableList<T>.synchronized(): MutableList<T> = synchronizedList<T>(this)
+fun <T> SynchronizedArrayList(): MutableList<T> = ArrayList<T>().synchronized()
