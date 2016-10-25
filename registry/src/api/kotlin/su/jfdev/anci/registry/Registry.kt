@@ -12,11 +12,6 @@ import java.util.*
  */
 interface Registry<R: Identified>: Iterable<R> {
     /**
-     * Class of [R]
-     */
-    val type: Class<R>
-
-    /**
      * Count of registrations
      */
     val size: Int

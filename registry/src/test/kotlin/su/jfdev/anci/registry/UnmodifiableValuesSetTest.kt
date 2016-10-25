@@ -26,8 +26,9 @@ class UnmodifiableValuesSetTest: FreeSpec() {
     }
 
     private fun check(from: () -> Collection<String>) {
-        val set = UnmodifiableValuesSet(from())
-        "when delegate without guarantee to distinct" - {
+        val original = from()
+        val set = UnmodifiableValuesSet(original)
+        "when delegate without guarantee to distinct using [${original.javaClass.name}]" - {
             immutability(adapter) { set }
             "iterator should not repeat entries" {
                 set.iterator().asSequence().count() shouldBe 2

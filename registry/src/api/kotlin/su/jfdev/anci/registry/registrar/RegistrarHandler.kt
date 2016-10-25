@@ -4,6 +4,7 @@ import su.jfdev.anci.registry.*
 import su.jfdev.anci.registry.exceptions.*
 
 interface RegistrarHandler<S, R: Registration<R>> {
+    val type: Class<R>
     val registrar: Registrar<S, R>
 
     infix fun from(source: S): R
@@ -54,7 +55,7 @@ interface RegistrarHandler<S, R: Registration<R>> {
 
 
     private companion object {
-        private fun RegistrarHandler<*, *>.throwConflict(): Nothing = throw RegistrationConflictException(registrar.registry)
-        private fun RegistrarHandler<*, *>.throwInvalid(): Nothing = throw RegistrationInvalidException(registrar.registry)
+        private fun RegistrarHandler<*, *>.throwConflict(): Nothing = throw RegistrationConflictException(type)
+        private fun RegistrarHandler<*, *>.throwInvalid(): Nothing = throw RegistrationInvalidException(type)
     }
 }

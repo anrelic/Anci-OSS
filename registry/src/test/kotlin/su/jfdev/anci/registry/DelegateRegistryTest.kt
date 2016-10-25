@@ -11,7 +11,7 @@ class DelegateRegistryTest: FreeSpec() {
         test("ConcurrentHashMap") { ConcurrentHashMap() }
         test("TreeMap") { TreeMap() }
         test("HashMap") { HashMap() }
-        test("non empty") {
+        test("NonEmpty") {
             generateSequence { Sample() }
                     .take(25)
                     .associateBy { it.uuid }
@@ -22,7 +22,7 @@ class DelegateRegistryTest: FreeSpec() {
             .registry(::Sample)
             .rename("$type should be immutable")
             .invoke(specAdapter) {
-                DelegateRegistry(type = Sample::class.java, delegate = block())
+                DelegateRegistry(delegate = block())
             }
 
 }

@@ -1,4 +1,4 @@
-@file:Suppress("UNUSED_VARIABLE")
+@file:Suppress("UNUSED_VARIABLE", "LeakingThis")
 
 package su.jfdev.anci.registry
 
@@ -8,6 +8,7 @@ import su.jfdev.anci.registry.registrar.*
 import su.jfdev.anci.registry.registrar.RegistryEvent.Reason.*
 import su.jfdev.anci.registry.service.*
 import su.jfdev.anci.util.*
+import su.jfdev.anci.util.syntax.*
 import su.jfdev.test.calling.*
 import su.jfdev.test.calling.Inspector.Inspectors.always
 import su.jfdev.test.features.*
@@ -27,7 +28,7 @@ abstract class RegistrarSpec(val service: RegistryService): Stepwise.Spec() {
             "when register source" - {
                 "when validate source" - {
                     val adapter = RegistrarAdapter<String, Sample> {
-                        object: SampleHandler(it) {
+                        object: SampleHandler(reify(), it) {
                             override fun validate(source: String) = null != orNull {
                                 UUID.fromString(source)
                             }
@@ -50,7 +51,7 @@ abstract class RegistrarSpec(val service: RegistryService): Stepwise.Spec() {
                 "when validate source with custom invalid()" - {
                     val replacement = UUID.randomUUID()
                     val adapter = RegistrarAdapter<String, Sample> {
-                        object: SampleHandler(it) {
+                        object: SampleHandler(reify(), it) {
                             override fun validate(source: String) = null != orNull {
                                 UUID.fromString(source)
                             }
@@ -80,7 +81,7 @@ abstract class RegistrarSpec(val service: RegistryService): Stepwise.Spec() {
                     val replacement = Sample()
                     val invalid = ArrayList<UUID>()
                     val adapter = RegistrarAdapter<String, Sample> {
-                        object: SampleHandler(it) {
+                        object: SampleHandler(reify(), it) {
                             override fun validate(registration: Sample) = registration.uuid !in invalid
                         }
                     }
@@ -104,7 +105,7 @@ abstract class RegistrarSpec(val service: RegistryService): Stepwise.Spec() {
                     val replacement = Sample()
                     val invalid = ArrayList<UUID>()
                     val adapter = RegistrarAdapter<String, Sample> {
-                        object: SampleHandler(it) {
+                        object: SampleHandler(reify(), it) {
                             override fun validate(registration: Sample) = registration.uuid !in invalid
                             override fun invalid(registration: Sample) = replacement
                         }
@@ -134,7 +135,7 @@ abstract class RegistrarSpec(val service: RegistryService): Stepwise.Spec() {
                     "should call conflict(source)" {
                         val conflict = Sample()
                         val adapter = RegistrarAdapter<String, Sample> {
-                            object: SampleHandler(it) {
+                            object: SampleHandler(reify(), it) {
                                 override fun conflict(source: String) = conflict
                             }
                         }
@@ -150,7 +151,7 @@ abstract class RegistrarSpec(val service: RegistryService): Stepwise.Spec() {
                         "should call unregister(registration)" {
                             CallingInspection(always) {
                                 RegistrarAdapter<String, Sample> {
-                                    object: SampleHandler(it) {
+                                    object: SampleHandler(reify(), it) {
                                         override fun unregister(registration: Sample) = call()
                                     }
                                 }
@@ -165,7 +166,7 @@ abstract class RegistrarSpec(val service: RegistryService): Stepwise.Spec() {
                         "should call conflict(registration)" {
                             CallingInspection(always) {
                                 RegistrarAdapter<String, Sample> {
-                                    object: SampleHandler(it) {
+                                    object: SampleHandler(reify(), it) {
                                         override fun conflict(registration: Sample) = call()
                                     }
                                 }
