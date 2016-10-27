@@ -5,6 +5,4 @@ include 'service',
         'test',
         'logging',
         'species',
-        'geography',
-        'registry'
-
+        'geography'
